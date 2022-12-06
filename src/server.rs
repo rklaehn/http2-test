@@ -17,12 +17,12 @@ impl EchoServer {
         let (res_tx, res_rx) = flume::bounded(1);
         let _ = self.tx.send((req_rx, res_tx));
         tokio::task::spawn(async move {
-        req.into_body()
-            .try_for_each(|chunk| async {
-                req_tx.send_async(chunk).await.unwrap();
-                Ok(())
-            })
-            .await?;
+            req.into_body()
+                .try_for_each(|chunk| async {
+                    req_tx.send_async(chunk).await.unwrap();
+                    Ok(())
+                })
+                .await?;
             anyhow::Ok(())
         });
         let body = res_rx.into_stream().map(anyhow::Ok);
@@ -36,8 +36,7 @@ impl EchoServer {
     }
 }
 
-#[tokio::main]
-async fn main() -> anyhow::Result<()> {
+pub async fn echo_server() -> anyhow::Result<()> {
     // Create a global Flume channel for publishing request/response pairs
     let (tx, rx) = flume::bounded(1);
 

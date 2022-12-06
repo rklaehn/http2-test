@@ -279,6 +279,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "http2-test"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bytes",
+ "flume",
+ "futures",
+ "hyper",
+ "quic-rpc",
+ "tokio",
+]
+
+[[package]]
 name = "httparse"
 version = "1.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -312,19 +325,6 @@ dependencies = [
  "tower-service",
  "tracing",
  "want",
-]
-
-[[package]]
-name = "hyper-test"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "bytes",
- "flume",
- "futures",
- "hyper",
- "quic-rpc",
- "tokio",
 ]
 
 [[package]]
